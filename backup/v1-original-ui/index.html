@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2f6b3a">
+<title>Smart Agri Assistant</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🌾 Smart Agri Assistant</h1>
+  <span id="net" class="pill">online</span>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="tab-home" class="tab active">
+  <div class="card">
+    <h2>Your field</h2>
+    <button id="btnLocate" class="primary">📍 Use my GPS location</button>
+    <p id="locText" class="muted">Location not set.</p>
+    <div id="weather" class="grid2"></div>
+    <p class="muted small">Sensors used: GPS, network, camera, local storage, service worker.</p>
+  </div>
+  <div class="card">
+    <h2>Smart advice</h2>
+    <ul id="advice" class="list"><li class="muted">Get location to see advice.</li></ul>
+  </div>
+  <div class="card">
+    <h2>7‑day forecast</h2>
+    <div id="forecast" class="scroll"></div>
+  </div>
+</section>
+
+<!-- CROP -->
+<section id="tab-crop" class="tab">
+  <div class="card">
+    <h2>Crop recommender</h2>
+    <label>Soil type
+      <select id="soil">
+        <option value="loam">Loamy</option><option value="clay">Clay</option>
+        <option value="sandy">Sandy</option><option value="black">Black (regur)</option>
+        <option value="red">Red</option><option value="alluvial">Alluvial</option>
+      </select></label>
+    <label>Soil pH: <b id="phv">6.5</b>
+      <input type="range" id="ph" min="4" max="9" step="0.1" value="6.5"></label>
+    <label>Season
+      <select id="season">
+        <option value="auto">Auto (from date)</option>
+        <option value="kharif">Kharif (Jun–Oct)</option>
+        <option value="rabi">Rabi (Nov–Mar)</option>
+        <option value="zaid">Zaid (Mar–Jun)</option>
+      </select></label>
+    <label>Water availability
+      <select id="water"><option value="low">Low</option><option value="med" selected>Medium</option><option value="high">High (irrigated)</option></select></label>
+    <label>Avg temperature °C (blank = use live weather)
+      <input type="number" id="tempIn" placeholder="auto"></label>
+    <button id="btnRecommend" class="primary">Recommend crops</button>
+    <div id="cropResults"></div>
+  </div>
+</section>
+
+<!-- DISEASE -->
+<section id="tab-leaf" class="tab">
+  <div class="card">
+    <h2>Leaf health scan</h2>
+    <p class="muted small">Takes a photo with your camera and analyses it on‑device (no upload). Colour analysis is a screening aid, not a lab diagnosis.</p>
+    <input type="file" id="leafFile" accept="image/*" capture="environment">
+    <canvas id="leafCanvas" width="320" height="240" hidden></canvas>
+    <div id="leafResult"></div>
+  </div>
+</section>
+
+<!-- CALC -->
+<section id="tab-calc" class="tab">
+  <div class="card">
+    <h2>Fertilizer & irrigation calculator</h2>
+    <label>Crop <select id="calcCrop"></select></label>
+    <label>Field area (acres) <input type="number" id="area" value="1" min="0.1" step="0.1"></label>
+    <label>Growth stage
+      <select id="stage"><option value="0.5">Initial</option><option value="0.8">Development</option><option value="1.1" selected>Mid season</option><option value="0.8">Late season</option></select></label>
+    <button id="btnCalc" class="primary">Calculate</button>
+    <div id="calcResult"></div>
+  </div>
+</section>
+
+<!-- LOG -->
+<section id="tab-log" class="tab">
+  <div class="card">
+    <h2>Farm diary (works offline)</h2>
+    <label>Activity
+      <select id="logType"><option>Sowing</option><option>Irrigation</option><option>Fertilizer</option><option>Pesticide</option><option>Harvest</option><option>Observation</option></select></label>
+    <label>Note <input id="logNote" placeholder="e.g. 20 kg urea, north plot"></label>
+    <button id="btnLog" class="primary">Save entry (with GPS + time)</button>
+    <button id="btnExport">Export CSV</button>
+    <ul id="logList" class="list"></ul>
+  </div>
+</section>
+<!-- VOICE -->
+<section id="tab-voice" class="tab">
+  <div class="card">
+    <h2>Voice assistant</h2>
+    <label>Language
+      <select id="voiceLang">
+        <option value="en-IN">English</option><option value="hi-IN">हिन्दी (Hindi)</option>
+        <option value="ta-IN">தமிழ் (Tamil)</option><option value="te-IN">తెలుగు (Telugu)</option>
+      </select></label>
+    <button id="btnVoice" class="mic" type="button" aria-label="Tap and speak">🎤</button>
+    <p id="voiceStatus" class="muted small center">Tap the mic and ask about weather, crops, water or fertilizer.</p>
+    <div class="ask"><input id="voiceText" placeholder="…or type your question"><button id="btnAsk" type="button">Ask</button></div>
+    <p id="voiceHeard" class="muted"></p>
+    <div id="voiceReply" class="res" aria-live="polite"></div>
+    <p id="voiceNote" class="muted small"></p>
+    <p class="muted small">Try:</p>
+    <div id="voiceExamples"></div>
+    <p class="muted small">Answers are calculated on the phone. Speech-to-text uses the browser's speech service and needs internet; typing works offline.</p>
+  </div>
+</section>
+</main>
+
+<nav>
+  <button data-tab="home" class="on">🏠<span>Home</span></button>
+  <button data-tab="crop">🌱<span>Crops</span></button>
+  <button data-tab="leaf">🍃<span>Leaf</span></button>
+  <button data-tab="calc">🧮<span>Calc</span></button>
+  <button data-tab="log">📒<span>Diary</span></button>
+  <button data-tab="voice">🗣️<span>Voice</span></button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

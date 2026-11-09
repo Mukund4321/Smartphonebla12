@@ -1,2 +1,24 @@
+# ---- Dependencies (recreate with `npm install`) ----
 node_modules/
+
+# ---- Playwright output (recreate with `npx playwright test`) ----
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+
+# ---- Logs ----
+*.log
+npm-debug.log*
+
+# ---- Local env / secrets ----
+.env
+.env.*
+
+# ---- OS / editor clutter ----
 .DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/

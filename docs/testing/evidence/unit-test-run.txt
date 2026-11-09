@@ -1,0 +1,88 @@
+
+> smart-agri-assistant@1.1.0 test
+> node --test tests/unit/logic.test.js
+
+▶ Crop scoring – Boundary Value Analysis on temperature (Rice 20–35 °C)
+  ✔ TC-01 min-1 (19 °C) loses 5 points (0.5698ms)
+  ✔ TC-02 min (20 °C) full score (0.1119ms)
+  ✔ TC-03 nominal (27 °C) full score (0.1142ms)
+  ✔ TC-04 max (35 °C) full score (0.0949ms)
+  ✔ TC-05 max+1 (36 °C) loses 5 points (0.0981ms)
+  ✔ TC-06 far outside (0 °C) temperature points floor at 0, never negative (0.1439ms)
+✔ Crop scoring – Boundary Value Analysis on temperature (Rice 20–35 °C) (1.875ms)
+▶ Crop scoring – Equivalence Partitioning on pH and water
+  ✔ TC-07 pH inside range (6.5) → 20 pH points (0.3117ms)
+  ✔ TC-08 pH below range (5.0) → partial credit 15 (0.1312ms)
+  ✔ TC-09 pH far above range (9.0) → 0 pH points (0.1147ms)
+  ✔ TC-10 water high for high-need crop → 10 points (0.2032ms)
+  ✔ TC-11 water medium for high-need crop → 5 points (0.0861ms)
+  ✔ TC-12 water low for high-need crop → 0 points (0.0531ms)
+✔ Crop scoring – Equivalence Partitioning on pH and water (1.1014ms)
+▶ Crop recommender – functional
+  ✔ TC-13 clay / pH 6.5 / kharif / high water / 27 °C → Rice ranked first (0.1404ms)
+  ✔ TC-14 returns exactly 4 results sorted by score (descending) (0.119ms)
+  ✔ TC-15 every score stays within 0–100 for extreme inputs (0.1979ms)
+✔ Crop recommender – functional (0.5287ms)
+▶ Season detection – BVA on month boundaries
+  ✔ TC-16 May → zaid, June → kharif (0.6679ms)
+  ✔ TC-17 October → kharif, November → rabi (0.049ms)
+  ✔ TC-18 February → rabi, March → zaid (0.0432ms)
+✔ Season detection – BVA on month boundaries (0.8318ms)
+▶ Irrigation model
+  ✔ TC-19 ET0 5 × Kc 1.1, no rain, 1 acre → 5.5 mm ≈ 22,258 L (0.1573ms)
+  ✔ TC-20 BVA rain just below cutoff (6.8 mm) → small positive need (0.0461ms)
+  ✔ TC-21 BVA rain at cutoff (6.875 mm) → need is exactly 0 (0.0406ms)
+  ✔ TC-22 heavy rain (50 mm) → never negative (0.0483ms)
+  ✔ TC-23 litres scale linearly with area (2 acres = 2 × 1 acre) (0.0459ms)
+✔ Irrigation model (0.4184ms)
+▶ Fertilizer calculator
+  ✔ TC-24 Wheat 1 acre → DAP 52.2, Urea 83.9, MOP 26.7 kg (0.1196ms)
+  ✔ TC-25 Chickpea has no K target → MOP 0 kg (0.0541ms)
+  ✔ TC-26 Urea never negative when DAP already covers N (Groundnut) (0.0497ms)
+✔ Fertilizer calculator (0.2769ms)
+▶ Weather advice – Decision Table
+  ✔ TC-27 R1 heavy rain (12 mm) → skip irrigation & spraying (0.1483ms)
+  ✔ TC-28 R2 hot (33 °C) & dry → irrigate early morning (0.0488ms)
+  ✔ TC-29 R3 windy (20 km/h boundary) → avoid spraying (0.0413ms)
+  ✔ TC-30 R3 calm (19.9 km/h) → spraying OK (0.0575ms)
+  ✔ TC-31 R4 humidity 85 % + 25 °C → fungal risk (0.0439ms)
+  ✔ TC-32 R5 5 °C → frost alert; 5.1 °C → none (0.0572ms)
+  ✔ TC-33 R6 38 °C → heat stress alert (0.0514ms)
+  ✔ TC-34 rain 9.9 mm (below 10 boundary) → no skip-irrigation alert (0.0501ms)
+✔ Weather advice – Decision Table (0.5985ms)
+▶ Leaf health analysis
+  ✔ TC-35 all-green leaf → health 100, "healthy" (0.3441ms)
+  ✔ TC-36 all-yellow leaf → yellowing / nitrogen advice (0.0914ms)
+  ✔ TC-37 brown spots → fungal / spot advice, health clamped at 0 (0.0851ms)
+  ✔ TC-38 white background only → null (no plant tissue) (0.0914ms)
+  ✔ TC-39 50 % green + 50 % yellow → health 50 (0.1452ms)
+✔ Leaf health analysis (0.8521ms)
+▶ Security – output encoding (BUG-001 regression)
+  ✔ TC-40 script/img payload is neutralised (0.1646ms)
+  ✔ TC-41 quotes and ampersand escaped; null/undefined → empty string (0.0828ms)
+✔ Security – output encoding (BUG-001 regression) (0.3056ms)
+▶ Voice assistant – intent classification (EP: one partition per language)
+  ✔ TC-54 English: weather / crops / water / fertilizer / leaf (0.9906ms)
+  ✔ TC-55 Hindi (हिन्दी) (0.1849ms)
+  ✔ TC-56 Tamil (தமிழ்) (0.1759ms)
+  ✔ TC-57 Telugu (తెలుగు) (0.3225ms)
+  ✔ TC-58 overlapping crop names: వేరుశనగ → Groundnut, not Chickpea (శనగ) (0.1868ms)
+  ✔ TC-59 invalid partition: empty, null, gibberish → unknown (0.2823ms)
+  ✔ TC-60 case-insensitive ("WEATHER" = "weather") (0.1412ms)
+✔ Voice assistant – intent classification (EP: one partition per language) (2.5443ms)
+▶ Voice assistant – spoken replies use the same calculation engine
+  ✔ TC-61 weather without GPS → asks the user to set location (Hindi) (0.8728ms)
+  ✔ TC-62 weather with data → numbers + wind warning (English) (0.126ms)
+  ✔ TC-63 fertilizer reply matches fertilizer() – Wheat 1 acre: urea 84, DAP 52, MOP 27 (Telugu) (0.1206ms)
+  ✔ TC-64 water reply matches irrigation() – Rice, ET0 5, Kc 1.1 → 5.5 mm, 22258 L (Tamil) (0.1035ms)
+  ✔ TC-65 crop reply lists the top 3 from recommend(), in the local language (Hindi, rabi) (0.1448ms)
+  ✔ TC-66 unsupported language code falls back to English (0.0614ms)
+✔ Voice assistant – spoken replies use the same calculation engine (1.5473ms)
+ℹ tests 54
+ℹ suites 11
+ℹ pass 54
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 112.2087

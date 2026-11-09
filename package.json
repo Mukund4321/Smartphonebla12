@@ -1,0 +1,16 @@
+{
+  "name": "smart-agri-assistant",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Smart Agri Assistant PWA with unit and Playwright E2E tests",
+  "scripts": {
+    "test": "node --test tests/unit/logic.test.js",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && playwright test",
+    "report": "playwright show-report",
+    "serve": "python -m http.server 8080"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}
