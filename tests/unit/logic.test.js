@@ -111,6 +111,11 @@ describe('Leaf health analysis', () => {
   });
   test('TC-38 white background only → null (no plant tissue)', () => assert.equal(A.analyseLeaf(img([[255, 255, 255], 100])), null));
   test('TC-39 50 % green + 50 % yellow → health 50', () => assert.equal(A.analyseLeaf(img([[40, 160, 40], 50], [[200, 180, 60], 50])).health, 50));
+  // Found by the coverage report: the "Mixed colours" branch (app.js line 89) was never executed
+  test('TC-72 60 % green + 40 % unclassified (blue) → "Mixed colours, retake photo"', () => {
+    const r = A.analyseLeaf(img([[40, 160, 40], 60], [[40, 40, 160], 40]));
+    assert.equal(r.green, 60); assert.match(r.note, /Mixed colours/);
+  });
 });
 
 describe('Security – output encoding (BUG-001 regression)', () => {

@@ -1,6 +1,6 @@
 # Test Cases – Smart Agri Assistant
 
-**Totals:** 71 automated (54 unit + 17 Playwright E2E), plus 5 manual cases on a real phone.
+**Totals:** 80 automated (55 unit + 17 Playwright E2E + 8 Postman API), plus 5 manual cases on a real phone.
 **Technique key:** BVA = Boundary Value Analysis · EP = Equivalence Partitioning · DT = Decision Table · UC = Use case · ST = State transition · EG = Error guessing · SEC = Security
 
 The "Actual" column records the result of the run on 10 Nov 2026. Raw output is in `evidence/`.
@@ -50,6 +50,7 @@ Default input for crop scoring: Rice, clay soil, pH 6.5, kharif, high water (all
 | TC-37 | REQ-11 | EP/BVA | 100 % brown pixels | Health clamped to 0, fungal advice | Pass |
 | TC-38 | REQ-11 | EG | White background only | `null` (no plant tissue) | Pass |
 | TC-39 | REQ-11 | EP | 50 % green + 50 % yellow | Health 50 | Pass |
+| TC-72 | REQ-11 | EP | 60 % green + 40 % unclassified (blue) pixels. *Added after the coverage report showed this branch was never executed.* | "Mixed colours – retake the photo" | Pass |
 | TC-40 | REQ-14 | SEC | `<img src=x onerror=alert(1)>` | `&lt;img src=x onerror=alert(1)&gt;` | Pass |
 | TC-41 | REQ-14 | SEC | Quotes, `&`, `null`, `undefined` | All escaped; null and undefined → "" | Pass |
 
@@ -101,6 +102,23 @@ The microphone is faked: `SpeechRecognition` is replaced by a stub that "hears" 
 | TC-69 | REQ-16 | UC | Tamil → tap the fertilizer example chip; Telugu → tap the fertilizer chip | "யூரியா 84 கிலோ" then "యూరియా 84 కిలోలు" | Pass |
 | TC-70 | REQ-17 | EG | Browser with no SpeechRecognition → type "Fertilizer for wheat" → Ask | Mic disabled, "not supported" message, typed answer "urea 84 kilograms" | Pass |
 | TC-71 | REQ-14 | SEC | Type `<img src=x onerror="alert(1)">` → Ask | Shown as text, no `<img>` element, no dialog | Pass |
+
+## F. API tests – `tests/api/open-meteo.postman_collection.json` (Postman / Newman)
+
+These test the interface contract of the Open-Meteo weather service that the Home tab, irrigation calculator and voice assistant depend on. Every request also checks: response time under 5 s, and the body is JSON.
+
+| ID | Req | Tech | Request | Expected | Actual |
+|---|---|---|---|---|---|
+| TC-73 | REQ-18 | Contract | Chennai (13.0886, 80.2129), the app's exact query | 200; `temperature_2m`, `relative_humidity_2m`, `wind_speed_10m`, `precipitation` numeric; temp −50…60, humidity 0…100, wind and rain ≥ 0; units °C, %, km/h; timezone Asia/Kolkata | Pass |
+| TC-74 | REQ-18 | Contract | Same query, daily block | 200; exactly 7 entries in every daily array; ISO dates; max ≥ min every day; rain and ET₀ ≥ 0 | Pass |
+| TC-75 | REQ-18 | BVA | latitude = 90 (max valid) | 200 with a temperature | Pass |
+| TC-76 | REQ-18 | BVA | latitude = 90.01 (max + 0.01) | 400, `error: true`, "Latitude must be in range" | Pass |
+| TC-77 | REQ-18 | BVA | longitude = 180.01 (max + 0.01) | 400, "Longitude must be in range" | Pass |
+| TC-78 | REQ-18 | EG | latitude missing | 400, `error: true`, non-empty reason | Pass |
+| TC-79 | REQ-18 | BVA | forecast_days = 16 (max valid) | 200, 16 days returned | Pass |
+| TC-80 | REQ-18 | BVA | forecast_days = 17 (max + 1) | 400, "Forecast days is invalid" | Pass |
+
+Result: 8 requests, 39 assertions, 0 failures (`evidence/api-test-run.txt`).
 
 ## C. Manual test cases (real smartphone)
 

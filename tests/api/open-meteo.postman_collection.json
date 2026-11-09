@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Smart Agri Assistant – Open-Meteo API tests",
+    "description": "API contract + boundary tests for the weather service the app depends on. Import into Postman (File → Import) or run headless with: npm run test:api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.open-meteo.com/v1/forecast" },
+    { "key": "lat", "value": "13.0886" },
+    { "key": "lon", "value": "80.2129" },
+    { "key": "appParams", "value": "current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,et0_fao_evapotranspiration&forecast_days=7&timezone=auto" }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": { "type": "text/javascript", "exec": [
+        "pm.test('Response time is under 5 s', () => pm.expect(pm.response.responseTime).to.be.below(5000));",
+        "pm.test('Response is JSON', () => pm.response.to.be.json);"
+      ] }
+    }
+  ],
+  "item": [
+    {
+      "name": "TC-73 Current weather for Chennai – contract used by the Home tab",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude={{lat}}&longitude={{lon}}&{{appParams}}" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "const j = pm.response.json();",
+        "pm.test('Status 200', () => pm.response.to.have.status(200));",
+        "pm.test('All current fields the app reads are present and numeric', () => {",
+        "  ['temperature_2m','relative_humidity_2m','wind_speed_10m','precipitation'].forEach(k => pm.expect(j.current[k], k).to.be.a('number'));",
+        "});",
+        "pm.test('Values are physically sensible', () => {",
+        "  pm.expect(j.current.temperature_2m).to.be.within(-50, 60);",
+        "  pm.expect(j.current.relative_humidity_2m).to.be.within(0, 100);",
+        "  pm.expect(j.current.wind_speed_10m).to.be.at.least(0);",
+        "  pm.expect(j.current.precipitation).to.be.at.least(0);",
+        "});",
+        "pm.test('Units are °C, %, km/h (what the UI labels assume)', () => {",
+        "  pm.expect(j.current_units.temperature_2m).to.eql('°C');",
+        "  pm.expect(j.current_units.relative_humidity_2m).to.eql('%');",
+        "  pm.expect(j.current_units.wind_speed_10m).to.eql('km/h');",
+        "});",
+        "pm.test('timezone=auto resolves Chennai to Asia/Kolkata', () => pm.expect(j.timezone).to.eql('Asia/Kolkata'));"
+      ] } } ]
+    },
+    {
+      "name": "TC-74 7-day daily forecast – contract used by forecast, irrigation and advice",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude={{lat}}&longitude={{lon}}&{{appParams}}" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "const d = pm.response.json().daily;",
+        "pm.test('Status 200', () => pm.response.to.have.status(200));",
+        "pm.test('Exactly 7 days in every daily array', () => {",
+        "  ['time','temperature_2m_max','temperature_2m_min','precipitation_sum','et0_fao_evapotranspiration'].forEach(k => pm.expect(d[k], k).to.have.lengthOf(7));",
+        "});",
+        "pm.test('Dates are ISO YYYY-MM-DD', () => d.time.forEach(t => pm.expect(t).to.match(/^\\d{4}-\\d{2}-\\d{2}$/)));",
+        "pm.test('Daily max ≥ min every day', () => d.time.forEach((_, i) => pm.expect(d.temperature_2m_max[i]).to.be.at.least(d.temperature_2m_min[i])));",
+        "pm.test('Rain and ET0 are never negative (irrigation formula input)', () => {",
+        "  d.precipitation_sum.forEach(v => pm.expect(v).to.be.at.least(0));",
+        "  d.et0_fao_evapotranspiration.forEach(v => pm.expect(v).to.be.at.least(0));",
+        "});"
+      ] } } ]
+    },
+    {
+      "name": "TC-75 BVA latitude = 90 (max valid) → 200",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude=90&longitude=0&current=temperature_2m" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "pm.test('Status 200', () => pm.response.to.have.status(200));",
+        "pm.test('Returns a temperature', () => pm.expect(pm.response.json().current.temperature_2m).to.be.a('number'));"
+      ] } } ]
+    },
+    {
+      "name": "TC-76 BVA latitude = 90.01 (max + 0.01) → 400",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude=90.01&longitude=0&current=temperature_2m" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "const j = pm.response.json();",
+        "pm.test('Status 400', () => pm.response.to.have.status(400));",
+        "pm.test('error flag is true', () => pm.expect(j.error).to.eql(true));",
+        "pm.test('Reason mentions latitude range', () => pm.expect(j.reason).to.include('Latitude must be in range'));"
+      ] } } ]
+    },
+    {
+      "name": "TC-77 BVA longitude = 180.01 (max + 0.01) → 400",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude={{lat}}&longitude=180.01&current=temperature_2m" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "const j = pm.response.json();",
+        "pm.test('Status 400', () => pm.response.to.have.status(400));",
+        "pm.test('Reason mentions longitude range', () => pm.expect(j.reason).to.include('Longitude must be in range'));"
+      ] } } ]
+    },
+    {
+      "name": "TC-78 Missing latitude → 400",
+      "request": { "method": "GET", "url": "{{baseUrl}}?longitude={{lon}}&current=temperature_2m" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "pm.test('Status 400', () => pm.response.to.have.status(400));",
+        "pm.test('error flag is true with a reason', () => { const j = pm.response.json(); pm.expect(j.error).to.eql(true); pm.expect(j.reason).to.be.a('string').and.not.empty; });"
+      ] } } ]
+    },
+    {
+      "name": "TC-79 BVA forecast_days = 16 (max valid) → 16 days",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude={{lat}}&longitude={{lon}}&daily=temperature_2m_max&forecast_days=16" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "pm.test('Status 200', () => pm.response.to.have.status(200));",
+        "pm.test('16 days returned', () => pm.expect(pm.response.json().daily.time).to.have.lengthOf(16));"
+      ] } } ]
+    },
+    {
+      "name": "TC-80 BVA forecast_days = 17 (max + 1) → 400",
+      "request": { "method": "GET", "url": "{{baseUrl}}?latitude={{lat}}&longitude={{lon}}&daily=temperature_2m_max&forecast_days=17" },
+      "event": [ { "listen": "test", "script": { "type": "text/javascript", "exec": [
+        "const j = pm.response.json();",
+        "pm.test('Status 400', () => pm.response.to.have.status(400));",
+        "pm.test('Reason mentions allowed range', () => pm.expect(j.reason).to.include('Forecast days is invalid'));"
+      ] } } ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+(node:33412) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+newman
+
+Smart Agri Assistant – Open-Meteo API tests
+
+Root TC-73 Current weather for Chennai – contract used by the Home tab
+  GET https://api.open-meteo.com/v1/forecast?latitude=13.0886&longitude=80.2129&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,et0_fao_evapotranspiration&forecast_days=7&timezone=auto [200 OK, 1.29kB, 770ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 200
+  Pass  All current fields the app reads are present and numeric
+  Pass  Values are physically sensible
+  Pass  Units are °C, %, km/h (what the UI labels assume)
+  Pass  timezone=auto resolves Chennai to Asia/Kolkata
+
+Root TC-74 7-day daily forecast – contract used by forecast, irrigation and advice
+  GET https://api.open-meteo.com/v1/forecast?latitude=13.0886&longitude=80.2129&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,et0_fao_evapotranspiration&forecast_days=7&timezone=auto [200 OK, 1.29kB, 188ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 200
+  Pass  Exactly 7 days in every daily array
+  Pass  Dates are ISO YYYY-MM-DD
+  Pass  Daily max ≥ min every day
+  Pass  Rain and ET0 are never negative (irrigation formula input)
+
+Root TC-75 BVA latitude = 90 (max valid) → 200
+  GET https://api.open-meteo.com/v1/forecast?latitude=90&longitude=0&current=temperature_2m [200 OK, 635B, 184ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 200
+  Pass  Returns a temperature
+
+Root TC-76 BVA latitude = 90.01 (max + 0.01) → 400
+  GET https://api.open-meteo.com/v1/forecast?latitude=90.01&longitude=0&current=temperature_2m [400 Bad Request, 404B, 185ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 400
+  Pass  error flag is true
+  Pass  Reason mentions latitude range
+
+Root TC-77 BVA longitude = 180.01 (max + 0.01) → 400
+  GET https://api.open-meteo.com/v1/forecast?latitude=13.0886&longitude=180.01&current=temperature_2m [400 Bad Request, 406B, 185ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 400
+  Pass  Reason mentions longitude range
+
+Root TC-78 Missing latitude → 400
+  GET https://api.open-meteo.com/v1/forecast?longitude=80.2129&current=temperature_2m [400 Bad Request, 407B, 186ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 400
+  Pass  error flag is true with a reason
+
+Root TC-79 BVA forecast_days = 16 (max valid) → 16 days
+  GET https://api.open-meteo.com/v1/forecast?latitude=13.0886&longitude=80.2129&daily=temperature_2m_max&forecast_days=16 [200 OK, 875B, 186ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 200
+  Pass  16 days returned
+
+Root TC-80 BVA forecast_days = 17 (max + 1) → 400
+  GET https://api.open-meteo.com/v1/forecast?latitude=13.0886&longitude=80.2129&daily=temperature_2m_max&forecast_days=17 [400 Bad Request, 403B, 184ms]
+  Pass  Response time is under 5 s
+  Pass  Response is JSON
+  Pass  Status 400
+  Pass  Reason mentions allowed range
+
+----------------------------------------------------------------------
+|                         |            executed |             failed |
+--------------------------+---------------------+---------------------
+|              iterations |                   1 |                  0 |
+--------------------------+---------------------+---------------------
+|                requests |                   8 |                  0 |
+--------------------------+---------------------+---------------------
+|            test-scripts |                  16 |                  0 |
+--------------------------+---------------------+---------------------
+|      prerequest-scripts |                   0 |                  0 |
+--------------------------+---------------------+---------------------
+|              assertions |                  39 |                  0 |
+----------------------------------------------------------------------
+| total run duration: 2.6s                                           |
+----------------------------------------------------------------------
+| total data received: 3.19kB (approx)                               |
+----------------------------------------------------------------------
+| average response time: 258ms [min: 184ms, max: 770ms, s.d.: 193ms] |
+----------------------------------------------------------------------

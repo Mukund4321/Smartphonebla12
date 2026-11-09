@@ -36,6 +36,15 @@
 
 **Season month boundaries:** 2→3, 5→6, 10→11 (TC-16 – TC-18).
 
+**Weather API request parameters (Postman):**
+
+| Parameter | Valid boundary | Invalid boundary | Tests |
+|---|---|---|---|
+| latitude (−90…90) | 90 → 200 | 90.01 → 400 | TC-75, TC-76 |
+| longitude (−180…180) | – | 180.01 → 400 | TC-77 |
+| forecast_days (0…16) | 16 → 200 | 17 → 400 | TC-79, TC-80 |
+| latitude present? | present → 200 | missing → 400 | TC-73, TC-78 |
+
 ### A3. Decision Table – weather advice (`adviceFrom`)
 
 Conditions: C1 rain ≥ 10 mm · C2 rain < 1 mm and temp ≥ 32 °C · C3 wind ≥ 20 km/h · C4 humidity ≥ 85 % and 20 ≤ temp ≤ 30 · C5 temp ≤ 5 °C · C6 temp ≥ 38 °C
@@ -124,7 +133,13 @@ Both functions score below 10, the commonly used threshold for moderate risk, so
 
 The fix is verified by TC-40, TC-41 and TC-48.
 
-### B3. Other review findings
+### B3. Code coverage
+Measured with Node.js built-in coverage (`npm run coverage`, output in `evidence/coverage-report.txt`).
+- **Logic section of `app.js` (lines 1–225): 100 % of lines executed.**
+- Whole file: 55.8 % lines / 89.8 % branches. The uncovered lines 226–405 are the browser-only UI code, which is exercised by the Playwright E2E suite instead.
+- The coverage report found one untested branch (line 89, "Mixed colours" note). TC-72 now covers it.
+
+### B4. Other review findings
 - **Stale cache:** `sw.js` used a fixed cache name, so updates never reached users (BUG-003, fixed).
 - **Input validation:** the HTML `min` attribute does not stop typed values. Validation must happen in JS (BUG-002, fixed).
 - **Testability:** the pure logic is separated from the DOM code and exported through `module.exports`, which allows fast unit tests in Node without a browser.

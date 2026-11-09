@@ -13,8 +13,10 @@ module.exports = defineConfig({
   },
   projects: [
     {
-      name: 'Mobile (Pixel 5) – Edge',
-      use: { ...devices['Pixel 5'], channel: 'msedge' },
+      // Locally: the Microsoft Edge already installed on Windows.
+      // On GitHub Actions (CI=true): Playwright's bundled Chromium (same engine as Edge).
+      name: process.env.CI ? 'Mobile (Pixel 5) – Chromium' : 'Mobile (Pixel 5) – Edge',
+      use: { ...devices['Pixel 5'], ...(process.env.CI ? {} : { channel: 'msedge' }) },
     },
   ],
   webServer: {

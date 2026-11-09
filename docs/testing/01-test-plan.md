@@ -26,15 +26,18 @@ Verify that every functional module of the app produces correct results, handles
 | Security (output encoding) | REQ-14 |
 | Offline operation (service worker) | REQ-15 |
 | Multilingual voice assistant (en / hi / ta / te) | REQ-16, REQ-17 |
+| Weather API contract the app depends on | REQ-18 |
 
-**Out of scope:** the accuracy of the browser's speech-to-text service (Google / Microsoft), accuracy of agronomic constants (taken from standard tables), the Open-Meteo service itself, load/performance testing, and iOS Safari.
+**Out of scope:** the accuracy of the browser's speech-to-text service (Google / Microsoft), accuracy of agronomic constants (taken from standard tables), the accuracy of Open-Meteo's forecasts (only its interface contract is tested), load/performance testing, and iOS Safari.
 
 ## 3. Test Approach
 | Level | Technique | Tool |
 |---|---|---|
 | Unit (logic in `app.js`) | Boundary Value Analysis, Equivalence Partitioning, Decision Table | Node.js built-in test runner (`node:test`, xUnit / JUnit style) |
 | System / E2E (black box, via the UI) | Use-case and state-transition testing, error guessing | **Playwright** 1.56.1, Microsoft Edge, Pixel 5 mobile emulation |
-| Static (white box) | Control-flow graph, cyclomatic complexity, source-to-sink taint analysis | Manual code review |
+| API (contract + boundaries) | BVA on request parameters, response-schema and value-range checks | **Postman** collection, run headless with **Newman** 6.2.1 |
+| Static (white box) | Control-flow graph, cyclomatic complexity, source-to-sink taint analysis, **code coverage** | Manual code review + Node.js built-in coverage (`npm run coverage`) |
+| Continuous integration | All suites run on every push; deploy blocked if unit or E2E tests fail | **GitHub Actions** (`.github/workflows/pages.yml`) |
 | Manual on device | Exploratory testing of real sensors | Android phone + Chrome |
 
 External dependencies are isolated so results are repeatable: GPS is fixed to 27.4924, 77.6737 with Playwright's `geolocation` option, and the weather API is stubbed with `page.route()`.
@@ -67,7 +70,7 @@ Testing is suspended if the app fails to load or more than 30 % of tests fail. I
 4. Requirements Traceability Matrix – `04-rtm.md`
 5. Test Summary Report – `05-test-summary.md`
 6. Black-box and code analysis – `06-blackbox-code-analysis.md`
-7. Automation scripts – `tests/unit/logic.test.js`, `tests/e2e/app.spec.js`, `playwright.config.js`
+7. Automation scripts – `tests/unit/logic.test.js`, `tests/e2e/app.spec.js`, `playwright.config.js`, `tests/api/open-meteo.postman_collection.json`, `.github/workflows/pages.yml`
 8. Execution evidence – `docs/testing/evidence/`, Playwright HTML report (`playwright-report/`)
 
 ## 9. Risks
@@ -78,6 +81,7 @@ Testing is suspended if the app fails to load or more than 30 % of tests fail. I
 | No microphone on the test PC; speech output differs by device | Voice tests cannot run | Replace `SpeechRecognition` with a fake that returns a fixed sentence, and record `speechSynthesis.speak()` calls |
 | Service worker caches an old build | Users never receive fixes | Version the cache name (see BUG-003) |
 | Browser download blocked on the exam PC | Tool cannot run | Use the installed Edge (`channel: 'msedge'`) |
+| Live weather API is down or slow | API tests fail for reasons outside the app | API job in CI is reported but does not block the deploy; checks use ranges, not exact values |
 
 ## 10. Schedule
 | Activity | Status |

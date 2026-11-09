@@ -8,6 +8,13 @@ blob-report/
 playwright/.cache/
 playwright/.auth/
 
+# ---- Newman (Postman) and coverage output ----
+newman/
+newman-results.xml
+coverage/
+*.lcov
+lcov.info
+
 # ---- Logs ----
 *.log
 npm-debug.log*

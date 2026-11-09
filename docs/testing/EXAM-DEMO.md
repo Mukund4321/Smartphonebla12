@@ -35,6 +35,19 @@ Points to make:
 
 Optional debugging demo: `npx playwright test --ui` (time-travel UI).
 
+## 3b. API tests with Postman (1 min)
+```bash
+npm run test:api          # Newman runs the Postman collection: 8 requests, 39 assertions
+```
+Or open the **Postman** app → File → Import → `tests/api/open-meteo.postman_collection.json` → **Run collection**.
+Points to make: contract checks on every field the app reads, and boundary tests on the API (latitude 90 vs 90.01, forecast days 16 vs 17).
+
+## 3c. Coverage + CI (30 s)
+```bash
+npm run coverage          # 100 % of the logic lines; the UI part is covered by Playwright
+```
+On GitHub, open the **Actions** tab: every push runs the tests, and the site only deploys if they pass.
+
 ## 4. Show that a test really catches a bug (1 min, strong point)
 1. In `app.js`, in `renderLog`, change `${escapeHTML(x.note)}` back to `${x.note}`.
 2. Run `npx playwright test -g TC-48`. It **fails**.
@@ -43,8 +56,8 @@ Optional debugging demo: `npx playwright test --ui` (time-travel UI).
 ## 5. Documents (1 min)
 `docs/testing/`:
 1. `01-test-plan.md`
-2. `02-test-cases.md` (71 automated + 5 manual)
+2. `02-test-cases.md` (80 automated + 5 manual)
 3. `03-bug-report.md` (4 bugs, 3 fixed)
-4. `04-rtm.md` (17 requirements, 100 % covered)
+4. `04-rtm.md` (18 requirements, 100 % covered)
 5. `05-test-summary.md`
 6. `06-blackbox-code-analysis.md` (EP, BVA, decision table, CFG, cyclomatic complexity, taint analysis)

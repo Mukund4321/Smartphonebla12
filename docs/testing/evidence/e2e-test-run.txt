@@ -1,162 +1,176 @@
-[WebServer] ::ffff:127.0.0.1 - - [10/Nov/2026 00:24:48] "GET / HTTP/1.1" 200 -
+[WebServer] ::ffff:127.0.0.1 - - [10/Nov/2026 01:07:30] "GET / HTTP/1.1" 200 -
 
 Running 17 tests using 1 worker
 
-(node:3688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:36556) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-(node:3688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:36556) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  1 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:24:1 › TC-42 app loads with header, online status and 6 navigation tabs (575ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:49] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  2 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:31:1 › TC-43 GPS + weather: shows coordinates, 4 weather stats, advice and 7-day forecast (558ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:50] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  3 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:41:1 › TC-44 crop recommender: clay, pH 6.5, kharif, high water, 27 °C → Rice 100/100 first (553ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  4 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:52:1 › TC-45 calculator: Wheat, 2 acres, mid season → Urea 168, DAP 104, MOP 53 kg (598ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:51] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  5 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:64:1 › TC-46 calculator rejects zero / negative area (BUG-002 regression) (578ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:52] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  6 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:74:1 › TC-47 diary: saving an entry stores activity, note and GPS stamp; survives reload (744ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  7 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:87:1 › TC-48 security: HTML/script in a diary note is shown as text, never executed (BUG-001 regression) (653ms)
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:53] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  8 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:97:1 › TC-49 diary CSV export downloads farm-diary.csv with header and the entry (5.7s)
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:24:59] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok  9 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:109:1 › TC-50 leaf scan: uploaded green leaf photo is analysed on-device → health 100/100 (530ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok 10 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:123:1 › TC-51 weather API failure (HTTP 500) shows a clear message instead of crashing (569ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /manifest.webmanifest HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:00] "GET /app.js HTTP/1.1" 200 -
-  ok 11 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:130:1 › TC-52 GPS denied → user sees "GPS failed" message (498ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok 12 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:139:1 › TC-53 offline: after first visit the app reloads with no network and shows "offline" (519ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /manifest.webmanifest HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:01] "GET /app.js HTTP/1.1" 200 -
-  ok 13 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:163:1 › TC-67 voice tab: mic → speech recognised → answer shown and spoken (English, with live weather) (862ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /manifest.webmanifest HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:02] "GET /icon.svg HTTP/1.1" 200 -
-  ok 14 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:178:1 › TC-68 voice tab in Hindi: "धान को कितना पानी चाहिए?" → Hindi answer spoken with hi-IN (721ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /manifest.webmanifest HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /app.js HTTP/1.1" 200 -
-  ok 15 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:188:1 › TC-69 Tamil and Telugu example chips answer in the selected language (644ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:03] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /manifest.webmanifest HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /app.js HTTP/1.1" 200 -
-  ok 16 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:200:1 › TC-70 browser without speech recognition: mic disabled, typed question still answered (603ms)
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET / HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /style.css HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /app.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /sw.js HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /icon.svg HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /index.html HTTP/1.1" 200 -
-[WebServer] ::1 - - [10/Nov/2026 00:25:04] "GET /manifest.webmanifest HTTP/1.1" 200 -
-  ok 17 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:211:1 › TC-71 typed HTML in the voice box is shown as text (no XSS) (589ms)
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:31] "GET /icon.svg HTTP/1.1" 200 -
+  ok  1 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:24:1 › TC-42 app loads with header, online status and 6 navigation tabs (946ms)
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:32] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ok  2 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:31:1 › TC-43 GPS + weather: shows coordinates, 4 weather stats, advice and 7-day forecast (1.1s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:33] "GET /icon.svg HTTP/1.1" 200 -
+  ok  3 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:41:1 › TC-44 crop recommender: clay, pH 6.5, kharif, high water, 27 °C → Rice 100/100 first (2.1s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:35] "GET /icon.svg HTTP/1.1" 200 -
+  ok  4 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:52:1 › TC-45 calculator: Wheat, 2 acres, mid season → Urea 168, DAP 104, MOP 53 kg (1.6s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:37] "GET /icon.svg HTTP/1.1" 200 -
+  ok  5 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:64:1 › TC-46 calculator rejects zero / negative area (BUG-002 regression) (1.8s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:38] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:38] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:38] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:39] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:39] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:39] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:39] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ok  6 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:74:1 › TC-47 diary: saving an entry stores activity, note and GPS stamp; survives reload (1.8s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:40] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:40] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:40] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:40] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:41] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:41] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:41] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:41] "GET /icon.svg HTTP/1.1" 200 -
+  ok  7 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:87:1 › TC-48 security: HTML/script in a diary note is shown as text, never executed (BUG-001 regression) (1.6s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:42] "GET /icon.svg HTTP/1.1" 200 -
+  ok  8 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:97:1 › TC-49 diary CSV export downloads farm-diary.csv with header and the entry (6.6s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:48] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:48] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:48] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ok  9 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:109:1 › TC-50 leaf scan: uploaded green leaf photo is analysed on-device → health 100/100 (787ms)
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:49] "GET /icon.svg HTTP/1.1" 200 -
+  ok 10 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:123:1 › TC-51 weather API failure (HTTP 500) shows a clear message instead of crashing (977ms)
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:50] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /icon.svg HTTP/1.1" 200 -
+  ok 11 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:130:1 › TC-52 GPS denied → user sees "GPS failed" message (1.1s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:51] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ok 12 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:139:1 › TC-53 offline: after first visit the app reloads with no network and shows "offline" (853ms)
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:52] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:53] "GET /icon.svg HTTP/1.1" 200 -
+  ok 13 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:163:1 › TC-67 voice tab: mic → speech recognised → answer shown and spoken (English, with live weather) (2.2s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:54] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:54] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:54] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:55] "GET /app.js HTTP/1.1" 200 -
+  ok 14 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:178:1 › TC-68 voice tab in Hindi: "धान को कितना पानी चाहिए?" → Hindi answer spoken with hi-IN (1.8s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:56] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:57] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:57] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:57] "GET /icon.svg HTTP/1.1" 200 -
+  ok 15 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:188:1 › TC-69 Tamil and Telugu example chips answer in the selected language (2.3s)
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:07:59] "GET /icon.svg HTTP/1.1" 200 -
+  ok 16 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:200:1 › TC-70 browser without speech recognition: mic disabled, typed question still answered (1.2s)
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET / HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /style.css HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /app.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /sw.js HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /index.html HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /icon.svg HTTP/1.1" 200 -
+[WebServer] ::1 - - [10/Nov/2026 01:08:00] "GET /icon.svg HTTP/1.1" 200 -
+  ok 17 [Mobile (Pixel 5) – Edge] › tests\e2e\app.spec.js:211:1 › TC-71 typed HTML in the voice box is shown as text (no XSS) (1.6s)
 
-  17 passed (18.3s)
+  17 passed (32.9s)
